@@ -1,29 +1,19 @@
-# #!/bin/bash
-# set -e
-
-# echo "================================"
-# echo "Building for Vercel Deployment"
-# echo "================================"
-
-# echo "Collecting static files..."
-# python manage.py collectstatic --noinput --clear --verbosity 2
-
-# echo "================================"
-# echo "Build Complete!"
-# echo "================================"
-
-
 #!/bin/bash
-echo "BUILD START"
+set -e
 
-# Create and activate a virtual environment to bypass PEP 668 restrictions
-python3 -m venv venv
-source venv/bin/activate
+echo "================================"
+echo "Building for Vercel Deployment"
+echo "================================"
 
-# Install dependencies inside the virtual environment
+echo "Installing dependencies..."
 pip install -r requirements.txt
 
-# Run collectstatic to generate CSS/JS files
-python manage.py collectstatic --noinput --clear
+echo "Running database migrations..."
+python manage.py migrate --noinput
 
-echo "BUILD END"
+echo "Collecting static files..."
+python manage.py collectstatic --noinput --clear --verbosity 2
+
+echo "================================"
+echo "Build Complete!"
+echo "================================"
