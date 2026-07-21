@@ -1,10 +1,14 @@
 #!/bin/bash
-# Build script for Vercel deployment
-# Collects all Django static files into staticfiles_build directory
+set -e
 
-echo "Building static files..."
+echo "============================================"
+echo "Starting Vercel Build Process"
+echo "============================================"
 
-# Run Django's collectstatic command to gather all static files
-python manage.py collectstatic --noinput
+# Collect static files
+echo "Running Django collectstatic..."
+python manage.py collectstatic --noinput --clear
 
-echo "Build complete!"
+echo "============================================"
+echo "Build Process Complete!"
+echo "============================================"

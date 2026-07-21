@@ -125,10 +125,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# Required for Vercel: Where collectstatic will gather all static files for deployment
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+# Detect if running on Vercel
+IS_VERCEL = os.environ.get('VERCEL') == '1'
 
-# Points to your custom static folders inside the project (include all app static folders)
+# For Vercel: Collect static files to staticfiles_build directory during build
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build')
+
+# Include all static directories from all apps
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'hospital_management', 'static'),
     os.path.join(BASE_DIR, 'doctor', 'static'),
@@ -136,12 +139,15 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'staff', 'static'),
 ]
 
-# Optimize static file serving without requiring a strict JSON manifest
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+# WhiteNoise configuration for production static file serving
+# Use CompressedStaticFilesStorage which doesn't require manifest.json
+if IS_VERCEL:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+else:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Tell WhiteNoise to find and serve static files directly from your project folders
+# Critical: Force WhiteNoise to look in source directories on Vercel
 WHITENOISE_USE_FINDERS = True
-# Crucial Fix: Forces WhiteNoise to serve local static files even when DEBUG = False on Vercel
 WHITENOISE_AUTOREFRESH = True
 
 # Default primary key field type
