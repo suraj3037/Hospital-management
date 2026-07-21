@@ -15,11 +15,7 @@
         "hospital_management/wsgi.py": {
             "memory": 1024,
             "maxDuration": 30,
-            "includeFiles": [
-                "staticfiles_build/**",
-                "db.sqlite3",
-                "requirements.txt"
-            ]
+            "includeFiles": "**"
         }
     }
 }
