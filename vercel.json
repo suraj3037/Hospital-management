@@ -1,0 +1,20 @@
+{
+  "buildCommand": "bash build_files.sh",
+  "outputDirectory": "staticfiles_build",
+  "env": {
+    "DEBUG": "False"
+  },
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/staticfiles_build/static/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=3600, s-maxage=3600"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "hospital_management/wsgi.py"
+    }
+  ]
+}

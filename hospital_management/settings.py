@@ -128,9 +128,12 @@ STATIC_URL = '/static/'
 # Required for Vercel: Where collectstatic will gather all static files for deployment
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
-# Points to your custom static folders inside the project
+# Points to your custom static folders inside the project (include all app static folders)
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'hospital_management', 'static'),
+    os.path.join(BASE_DIR, 'doctor', 'static'),
+    os.path.join(BASE_DIR, 'patient', 'static'),
+    os.path.join(BASE_DIR, 'staff', 'static'),
 ]
 
 # Optimize static file serving without requiring a strict JSON manifest

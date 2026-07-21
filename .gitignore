@@ -20,8 +20,9 @@ hospital_management/credentials.py
 .env.local
 *.pem
 
-# Vercel Deployment
+# Build & Deployment
 .vercel/
+staticfiles_build/
 
 # IDE & Editor Settings
 .vscode/
