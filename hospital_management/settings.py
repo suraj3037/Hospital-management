@@ -125,9 +125,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# Detect if running on Vercel
-IS_VERCEL = os.environ.get('VERCEL') == '1'
-
 # For Vercel: Collect static files to staticfiles_build directory during build
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build')
 
@@ -139,20 +136,12 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'staff', 'static'),
 ]
 
-# WhiteNoise configuration for production static file serving
-# On Vercel, use CompressedStaticFilesStorage (no manifest.json needed)
-if IS_VERCEL or not DEBUG:
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
-else:
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# WhiteNoise configuration - serve collected static files via middleware
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
-# Critical: Force WhiteNoise to serve collected static files
+# WhiteNoise settings for serving static files from source directories
 WHITENOISE_USE_FINDERS = True
 WHITENOISE_AUTOREFRESH = True
-WHITENOISE_MIMETYPES = {
-    '.woff': 'font/woff',
-    '.woff2': 'font/woff2',
-}
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
