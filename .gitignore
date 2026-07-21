@@ -9,10 +9,6 @@ venv/
 env/
 ENV/
 
-# Database
-*.sqlite3
-db.sqlite3
-
 # Security & Secrets
 hospital_management/credentials.py
 .env
