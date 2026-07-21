@@ -1,22 +1,14 @@
 {
-  "buildCommand": "bash build_files.sh",
-  "framework": "django",
-  "env": {
-    "DEBUG": "False",
-    "PYTHONUNBUFFERED": "1"
-  },
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "hospital_management/wsgi.py",
-      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD"]
-    }
-  ],
-  "functions": {
-    "hospital_management/wsgi.py": {
-      "memory": 1024,
-      "maxDuration": 30,
-      "includeFiles": "staticfiles_build/**"
-    }
-  }
+    "builds": [
+        {
+            "src": "hospital_management/wsgi.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "hospital_management/wsgi.py"
+        }
+    ]
 }
