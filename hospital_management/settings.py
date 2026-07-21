@@ -138,6 +138,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Tell WhiteNoise to find and serve static files directly from your project folders
 WHITENOISE_USE_FINDERS = True
+# Crucial Fix: Forces WhiteNoise to serve local static files even when DEBUG = False on Vercel
+WHITENOISE_AUTOREFRESH = True
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
