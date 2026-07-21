@@ -140,15 +140,19 @@ STATICFILES_DIRS = [
 ]
 
 # WhiteNoise configuration for production static file serving
-# Use CompressedStaticFilesStorage which doesn't require manifest.json
-if IS_VERCEL:
+# On Vercel, use CompressedStaticFilesStorage (no manifest.json needed)
+if IS_VERCEL or not DEBUG:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 else:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Critical: Force WhiteNoise to look in source directories on Vercel
+# Critical: Force WhiteNoise to serve collected static files
 WHITENOISE_USE_FINDERS = True
 WHITENOISE_AUTOREFRESH = True
+WHITENOISE_MIMETYPES = {
+    '.woff': 'font/woff',
+    '.woff2': 'font/woff2',
+}
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
