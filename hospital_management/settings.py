@@ -133,8 +133,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'hospital_management', 'static'),
 ]
 
-# Optimize static file serving with compression and caching
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Optimize static file serving without requiring a strict JSON manifest
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
+# Tell WhiteNoise to find and serve static files directly from your project folders
+WHITENOISE_USE_FINDERS = True
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
