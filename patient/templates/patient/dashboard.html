@@ -1,0 +1,36 @@
+{% extends "hospital_management/layout.html" %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'patient/css/dashboard.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock links %}
+{% block body %}
+<div>
+    <div class="container">
+        <div class="user">
+            <img class="img" src="{% static 'patient/Images/sample.png' %}" />
+            <h3 class="name" style="font-family : Product Sans;">{{patient.user.first_name}} {{patient.user.last_name}}
+            </h3>
+            <h5 class="type">Patient</h5>
+            <hr class="line">
+            <a href="/patient/profile"> <button class="button">Profile</button></a>
+            <a href='/patient/appointment-history'><button class="button">Appointment History</button></a>
+            <a href='/patient/view-prescriptions'><button class="button">View Prescriptions</button></a>
+            <a href='/patient/bills'><button class="button">Payment</button></a>
+            <button onclick="location.href = '/logout' " class="logout">Logout</button>
+        </div>
+        <div class="welcome">
+            <h2 class="heading" style="font-family : Product Sans;">Welcome {{patient.user.first_name}}!</h2>
+            <h4 class="subheading" style="font-family : Product Sans;">Tell us, how can we help you today</h4>
+            <div class="optiondiv">
+                <a href='/patient/book-appointment'><button class="option1"><i class="fa fa-calendar"
+                            style="font-size: 50px;"></i><br /><br />Book an appointment</button></a>
+                <a href='/patient/get-doctors'><button class="option2"><i class="fa fa-search"
+                            style="font-size: 50px;"></i><br /><br />Find doctors</button></a>
+                {% comment %} <button class="option3"><i class="fa fa-pencil" style="font-size: 50px;"></i><br /><br />Book a 
+                     Test</button> {% endcomment %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

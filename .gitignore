@@ -1,0 +1,40 @@
+# Python Byte-compiled / Optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments (Covers both .venv and venv in your root)
+venv/
+.venv/
+env/
+ENV/
+
+# Database
+*.sqlite3
+db.sqlite3
+
+# Security & Secrets
+hospital_management/credentials.py
+.env
+*.env
+.env.local
+*.pem
+
+# Vercel Deployment
+.vercel/
+
+# IDE & Editor Settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Custom & Miscellaneous
+*.fig
+Screenshots/
+runserver

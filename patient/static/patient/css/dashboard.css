@@ -1,0 +1,247 @@
+
+form {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+    margin-top: 50px;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+
+textarea {
+    
+    background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+    height: 230px auto !important;
+    border-radius: 10px;
+}
+
+input, select {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+    border-radius: 5px;
+    
+}
+
+select {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 229px;
+    border-radius: 5px;
+}
+
+
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+.user {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 580px;
+    padding: 15px;
+    
+    align-items: center;
+    border-radius: 15px;
+    background-color: rgb(252, 252, 252);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+}
+
+.name {
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+.img {
+    width: 180px;
+    margin: 30px;
+    border-radius: 90px;
+}
+
+.type {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: gray;
+    font-weight: lighter;
+}
+
+.details {
+    justify-content: flex-start;
+    font-size: 14px;
+    color: black;
+    font-weight: lighter;
+}
+
+.button {
+    margin-top: 10px;
+    margin: 8px;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 15px;
+    border: 0;
+}
+
+.logout {
+    margin-top: 50px;
+    margin: 20px;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: rgb(245, 105, 105);
+    border: white;
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+button.ghost {
+	background-color:  #F47171;
+	
+}
+
+.submit_btn{
+    margin-top: 50px;
+    margin: 20px;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: rgb(245, 105, 105);
+    border: white;
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+
+.button:hover {
+    font-weight: 600;
+}
+
+.line {
+    width: 200px;
+}
+
+.logout:hover {
+    transform: scale(1.1);
+}
+
+.welcome {
+    margin: 0;
+    width: 100%;
+    padding: 20px;
+    margin-left: 40px;
+}
+.optiondiv {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.option1 {
+    width: 270px;
+    height: 270px;
+    padding: 40px;
+    border-radius: 60px;
+    margin-top: 65px;
+    margin-right: 40px;
+    cursor: pointer;
+    border: 0;
+    font-size: 25px;
+    transition: transform 0.2s;
+    background-color: rgb(255, 217, 217);
+}
+
+.option2 {
+    width: 270px;
+    height: 270px;
+    padding: 40px;
+    border-radius: 60px;
+    margin-top: 65px;
+    margin-right: 40px;
+    cursor: pointer;
+    border: 0;
+    font-size: 25px;
+    transition: transform 0.2s;
+    background-color: rgb(182, 215, 252);
+}
+
+.option3 {
+    width: 270px;
+    height: 270px;
+    padding: 40px;
+    border-radius: 60px;
+    margin-top: 65px;
+    margin-right: 40px;
+    cursor: pointer;
+    border: 0;
+    font-size: 25px;
+    transition: transform 0.2s;
+    background-color: rgb(216, 245, 149);
+}
+
+.option1:hover {
+    transform: scale(1.05);
+}
+.option2:hover {
+    transform: scale(1.05);
+}
+.option3:hover {
+    transform: scale(1.05);
+}
+
+.heading {
+    margin-top: 20px;
+    font-size: 35px;
+}
+
+.subheading {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.option1 a,
+.option2 a,
+.option3 a {
+    text-decoration: none;
+    color: black;
+}
+
+@media (max-width: 1200px) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .user {
+        margin-bottom: 25px;
+    }
+
+    .welcome {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .optiondiv {
+        align-items: center;
+        flex-direction: column;
+    }
+}
