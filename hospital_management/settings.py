@@ -74,23 +74,30 @@ TEMPLATES = [
 WSGI_APPLICATION = 'hospital_management.wsgi.application'
 
 
-# Database
-# Safely import credentials for local development without crashing Vercel builds
-try:
-    from .credentials import database
-    DATABASES = {
-        'default': database
-    }
-except ImportError:
-    # Connect to the Cloud PostgreSQL database using the DATABASE_URL environment variable on Vercel
+# Database Configuration
+# 1. Prioritize DATABASE_URL if present in the environment (Vercel & Cloud Migration)
+if os.environ.get('DATABASE_URL'):
     DATABASES = {
         'default': dj_database_url.config(
-            # Fallback to local sqlite for offline development if DATABASE_URL is not set
-            default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
             conn_max_age=600,
             conn_health_checks=True,
         )
     }
+else:
+    # 2. Fall back to local credentials file if present
+    try:
+        from .credentials import database
+        DATABASES = {
+            'default': database
+        }
+    except ImportError:
+        # 3. Fall back to default SQLite for offline development
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': BASE_DIR / 'db.sqlite3',
+            }
+        }
 
 
 # Password validation
