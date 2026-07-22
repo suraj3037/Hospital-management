@@ -5,7 +5,15 @@ echo "================================"
 echo "Building for Vercel Deployment"
 echo "================================"
 
-echo "Installing dependencies..."
+echo "Force-installing critical packages to bypass cache..."
+# 1. Force install setuptools to fix the pkg_resources crash
+pip install setuptools
+
+# 2. Force install the modern version of widget_tweaks
+pip install django-widget-tweaks==1.4.12
+
+echo "Installing remaining dependencies..."
+# 3. Install the rest of the requirements
 pip install -r requirements.txt
 
 echo "Collecting static files..."
