@@ -9,8 +9,8 @@ echo "Force-installing critical packages to bypass cache..."
 # 1. Force install setuptools to fix the pkg_resources crash
 pip install setuptools
 
-# 2. Force install the modern version of widget_tweaks
-pip install django-widget-tweaks==1.4.12
+# 2. Force install the true modern version of widget_tweaks
+pip install django-widget-tweaks==1.5.1
 
 echo "Installing remaining dependencies..."
 # 3. Install the rest of the requirements
